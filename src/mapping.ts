@@ -1,76 +1,102 @@
 import { BigInt } from "@graphprotocol/graph-ts"
-import {
-  Dev,
-  Approval,
-  ApprovalForAll,
-  OwnershipTransferred,
-  Transfer
-} from "../generated/Dev/Dev"
-import { ExampleEntity } from "../generated/schema"
+import { Dev, ClaimCall, Transfer } from '../generated/Dev/Dev';
+import { DevToken } from "../generated/schema"
 
-export function handleApproval(event: Approval): void {
-  // Entities can be loaded from the store using a string ID; this ID
-  // needs to be unique across all entities of the same type
-  let entity = ExampleEntity.load(event.transaction.from.toHex())
+export function handleClaim(call: ClaimCall): void {
+  let id = call.inputs.tokenId;
+  let from = call.from;
+  let contractAddress = call.to;
 
-  // Entities only exist after they have been saved to the store;
-  // `null` checks allow to create entities on demand
-  if (entity == null) {
-    entity = new ExampleEntity(event.transaction.from.toHex())
+  let token = new DevToken(id.toString());
+  token.owner = from;
 
-    // Entity fields can be set using simple assignments
-    entity.count = BigInt.fromI32(0)
-  }
-
-  // BigInt and BigDecimal math are supported
-  entity.count = entity.count + BigInt.fromI32(1)
-
-  // Entity fields can be set based on event parameters
-  entity.owner = event.params.owner
-  entity.approved = event.params.approved
-
-  // Entities can be written to the store with `.save()`
-  entity.save()
-
-  // Note: If a handler doesn't require existing field values, it is faster
-  // _not_ to load the entity from the store. Instead, create it fresh with
-  // `new Entity(...)`, set the fields that should be updated and save the
-  // entity back to the store. Fields that were not set or unset remain
-  // unchanged, allowing for partial updates to be applied.
-
-  // It is also possible to access smart contracts from mappings. For
-  // example, the contract that has emitted the event can be connected to
-  // with:
-  //
-  // let contract = Contract.bind(event.address)
-  //
-  // The following functions can then be called on this contract to access
-  // state variables and other data:
-  //
-  // - contract.balanceOf(...)
-  // - contract.getApproved(...)
-  // - contract.getClothing(...)
-  // - contract.getIndustry(...)
-  // - contract.getLanguage(...)
-  // - contract.getLocation(...)
-  // - contract.getMind(...)
-  // - contract.getOS(...)
-  // - contract.getTextEditor(...)
-  // - contract.getVibe(...)
-  // - contract.isApprovedForAll(...)
-  // - contract.name(...)
-  // - contract.owner(...)
-  // - contract.ownerOf(...)
-  // - contract.supportsInterface(...)
-  // - contract.symbol(...)
-  // - contract.tokenByIndex(...)
-  // - contract.tokenOfOwnerByIndex(...)
-  // - contract.tokenURI(...)
-  // - contract.totalSupply(...)
+  setOtherFields(token, id, Dev.bind(contractAddress));
+  token.save();
 }
 
-export function handleApprovalForAll(event: ApprovalForAll): void {}
+export function handleTransfer(event: Transfer): void {
+  let id = event.params.tokenId.toString(); 
+  let token = DevToken.load(id);
+  if (token == null) {
+    return;
+  }
+  token.owner = event.params.to;
+  token.save();
+}
 
-export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
+function setOtherFields(token: DevToken, id: BigInt, contract: Dev): void {
+  setLanguage(token, id, contract);
+  setClothing(token, id, contract);
+  setIndustry(token, id, contract);
+  setLocation(token, id, contract);
+  setMind(token, id, contract);
+  setVibe(token, id, contract);
+  setOS(token, id, contract);
+  setTextEditor(token, id, contract);
+  setTokenURI(token, id, contract);
+}
 
-export function handleTransfer(event: Transfer): void {}
+function setLanguage(token: DevToken, id: BigInt, contract: Dev): void {
+  let res = contract.try_getLanguage(id);
+  if (!res.reverted) {
+    token.Language = res.value;
+  }
+}
+
+function setClothing(token: DevToken, id: BigInt, contract: Dev): void {
+  let res = contract.try_getClothing(id);
+  if (!res.reverted) {
+    token.Clothing = res.value;
+  }
+}
+
+function setIndustry(token: DevToken, id: BigInt, contract: Dev): void {
+  let res = contract.try_getIndustry(id);
+  if (!res.reverted) {
+    token.Industry = res.value;
+  }
+}
+
+function setLocation(token: DevToken, id: BigInt, contract: Dev): void {
+  let res = contract.try_getLocation(id);
+  if (!res.reverted) {
+    token.Location = res.value;
+  }
+}
+
+function setMind(token: DevToken, id: BigInt, contract: Dev): void {
+  let res = contract.try_getMind(id);
+  if (!res.reverted) {
+    token.Mind = res.value;
+  }
+}
+
+function setVibe(token: DevToken, id: BigInt, contract: Dev): void {
+  let res = contract.try_getVibe(id);
+  if (!res.reverted) {
+    token.Vibe = res.value;
+  }
+}
+
+function setOS(token: DevToken, id: BigInt, contract: Dev): void {
+  let res = contract.try_getOS(id);
+  if (!res.reverted) {
+    token.OS = res.value;
+  }
+}
+
+function setTextEditor(token: DevToken, id: BigInt, contract: Dev): void {
+  let res = contract.try_getTextEditor(id);
+  if (!res.reverted) {
+    token.TextEditor = res.value;
+  }
+}
+
+function setTokenURI(token: DevToken, id: BigInt, contract: Dev): void {
+  let res = contract.try_tokenURI(id);
+
+  if (!res.reverted) {
+    token.tokenURI = res.value;
+  }
+}
+

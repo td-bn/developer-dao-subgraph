@@ -1,6 +1,15 @@
-type ExampleEntity @entity {
+type DevToken @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  approved: Bytes! # address
+  owner: Bytes
+
+  OS: String
+  TextEditor: String
+  Clothing: String
+  Language: String
+  Location: String
+  Industry: String
+  Mind: String
+  Vibe: String
+  
+  tokenURI: String
 }

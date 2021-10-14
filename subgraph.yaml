@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,9 +8,10 @@ dataSources:
     source:
       address: "0x25ed58c027921e14d86380ea2646e3a1b5c55a8b"
       abi: Dev
+      startBlock: 13153967
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.2
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - Approval
@@ -20,13 +21,13 @@ dataSources:
       abis:
         - name: Dev
           file: ./abis/Dev.json
+
+      callHandlers:
+        - function: claim(uint256)
+          handler: handleClaim
+
       eventHandlers:
-        - event: Approval(indexed address,indexed address,indexed uint256)
-          handler: handleApproval
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
+
       file: ./src/mapping.ts

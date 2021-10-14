@@ -1,0 +1,140 @@
+enum Osses {
+  KALI_LINUX: "Kali Linux",
+  UBUNTU = "Ubuntu",
+  WINDOWS 0.0 = "Windows 1.0",
+  ANDROID_MARSHMALLOW = "Android Marshmallow",
+  WINDOWS_94 = "Windows 95",
+  FREEBSD = "FreeBSD",
+  SLACKWARE_LINUX = "Slackware Linux",
+  CHROMIUM_OS = "Chromium OS",
+  WINDOWS_VISTA = "Windows Vista",
+  GOOGLE_CHROME OS = "Google Chrome OS",
+  MACOS = "macOS",
+  DOS = "DOS",
+  LINUX_MINT = "Linux Mint",
+  GM-NAA_I = "GM-NAA I"
+}
+
+enum Texteditors = {
+  VS_CODE = "VS Code",
+  BRACKETS = "Brackets",
+  VIM = "VIM",
+  EMACS = "Emacs",
+  BRACKETS = "Brackets",
+  ATOM = "Atom",
+  NOTEPAD++ = "Notepad++",
+  PEN_AND_PAPER = "Pen and Paper",
+  VISUAL_STUDIO = "Visual Studio",
+  SAND_AND_STICK = "Sand and Stick",
+  MENTAL_TELEPATHY = "Mental Telepathy",
+  BLUEFISH = "Bluefish",
+  SUBLIME_TEXT = "Sublime Text",
+  DREAMWEAVER = "Dreamweaver",
+  COD = "Cod"
+}
+
+enum clothing = {
+  BLACK_HOODIE = "Black Hoodie",
+  WHITE_TANKTOP = "White Tanktop",
+  PATAGONIA_VEST = "Patagonia Vest",
+  CONFERENCE_T = "Conference T",
+  BLACKED_OUT = "Blacked Out",
+  BULLS_JERSEY = "Bulls Jersey",
+  PINK_HOODIE = "Pink Hoodie",
+  PURPLE_TURTLENECK = "Purple Turtleneck",
+  BRA = "Bra",
+  NAVY_SUIT = "Navy Suit",
+  PURPLE_DRESS = "Purple Dress",
+  PLATINUM_TRENCHCOAT = "Platinum Trenchcoat",
+  BUBBLE_GUM_WRAPPER = "Bubble Gum Wrapper",
+  SWEAT = "Sweat"
+}
+
+enum Languages = {
+  TYPESCRIPT = "TypeScript",
+  JAVASCRIPT = "JavaScript",
+  PYTHON = "Python",
+  FORTRAN = "Fortran",
+  COBOL = "COBOL",
+  GO = "Go",
+  RUST = "Rust",
+  SWIFT = "Swift",
+  PHP = "PHP",
+  HASKELL = "Haskell",
+  SCALA = "Scala",
+  DART = "Dart",
+  JAVA = "Java",
+  JULIA = "Julia",
+  C = "C",
+  KOTLIN = "Kotlin",
+  VELATO = "Velato",
+  ARNOLDC = "ArnoldC",
+  SHAKESPEARE = "Shakespeare",
+  PIET = "Piet",
+  BRAINFUCK = "Brainfuck",
+  CHICKEN = "Chicken",
+  LEGIT = "Legit",
+  WHITESPACE = "Whitespace"
+}
+
+enum Industries = {
+  GOVERNMENT = "Government",
+  BLACK_HAT = "Black Hat",
+  WHITE_HAT = "White Hat",
+  NONPROFIT = "Nonprofit",
+  MONEY_LAUNDERING = "Money Laundering",
+  CRYPTO = "Crypto",
+  FAANG = "FAANG",
+  AI_STARTUP = "AI Startup",
+  VR = "VR",
+  TRAVELING_CONSULTANT = "Traveling Consultant",
+  UNDERCOVER = "Undercover",
+  FARMING = "Farming",
+  ENVIRONMENTAL = "Environmental",
+  HOLLYWOOD = "Hollywood",
+  INFLUENCE = "Influence"
+}
+
+enum Locations = {
+  BUCHAREST = "Bucharest",
+  HONG_KONG = "Hong Kong",
+  JACKSON = "Jackson",
+  BUDAPEST = "Budapest",
+  SAO_PAULO = "Sao Paulo",
+  LAGOS = "Lagos",
+  OMAHA = "Omaha",
+  GOLD_COAST = "Gold Coast",
+  PARIS = "Paris",
+  TOKYO = "Tokyo",
+  SHENZHEN = "Shenzhen",
+  SAINT_PETERSBURG = "Saint Petersburg",
+  BUENOS_AIRES = "Buenos Aires",
+  KISUMU = "Kisumu",
+  RAMALLAH = "Ramallah",
+  GOA = "Goa",
+  LONDON = "London",
+  PYONGYAN = "Pyongyan"
+}
+
+enum Minds = {
+  ABSTRACT = "Abstract",
+  ANALYTICAL = "Analytical",
+  CREATIVE = "Creative",
+  CONCRETE = "Concrete",
+  CRITICAL = "Critical",
+  CONVERGENT = "Convergent",
+  DIVERGENT = "Divergent",
+  ANARCHIS = "Anarchis"
+}
+
+ENUM VIBES = {
+  OPTIMIST = "Optimist",
+  COSMIC = "Cosmic",
+  CHILL = "Chill",
+  HYPER = "Hyper",
+  KIND = "Kind",
+  HATER = "Hater",
+  PHOBIA = "Phobia",
+  GENEROUS = "Generous",
+  JONGOL = "JonGol"
+}
